@@ -1,3 +1,3 @@
-fastapi==0.103.2
-opentrons==6.2.1
-uvicorn==0.23.2
+fastapi
+opentrons
+uvicorn
