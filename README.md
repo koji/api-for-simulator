@@ -14,4 +14,5 @@ uvicorn main:app --reload
 ```shell
 uvicorn main:app
 ```
-Then go to http://localhost:8000/docs
+
+Then go to http://localhost:8000/docs to check the api doc.
