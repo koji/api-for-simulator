@@ -46,3 +46,8 @@ Test the api server with curl or postman/httpie
 ```shell
 curl localhost:80
 ```
+
+## Tool
+
+- postman: https://www.postman.com/
+- httpie: https://httpie.io/
