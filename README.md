@@ -2,7 +2,7 @@
 
 api server for opentrons-simulator
 
-### how to run
+## how to run locally
 
 ```shell
 pip install -r requirements.txt
@@ -19,7 +19,7 @@ uvicorn main:app
 
 Then go to http://localhost:8000/docs to check the api doc.
 
-### Dockerfile
+## How to run the server with Dockerfile
 
 ```shell
 git clone https://github.com/koji/api-for-simulator.git
