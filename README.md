@@ -19,6 +19,8 @@ uvicorn main:app
 
 Then go to http://localhost:8000/docs to check the api doc.
 
+`/protocol/id` does not work since it is a dummy function right now.
+
 ## How to run the server with Dockerfile
 
 ```shell
