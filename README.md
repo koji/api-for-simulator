@@ -1,18 +1,46 @@
 # api-for-simulator
+
 api server for opentrons-simulator
 
-
 ### how to run
+
 ```shell
 pip install -r requirements.txt
 
 cd app
-uvicorn main:app --reload 
+uvicorn main:app --reload
 ```
 
 ### docs
+
 ```shell
 uvicorn main:app
 ```
 
 Then go to http://localhost:8000/docs to check the api doc.
+
+### Dockerfile
+
+```shell
+git clone https://github.com/koji/api-for-simulator.git
+cd api-for-simulator
+docker build -t simulator-api:1.0.0 .
+```
+
+After building the image
+
+```shell
+docker run -d --name simulator-api-container -p 80:80 simulator-api:1.0.0
+```
+
+Check the container
+
+```shell
+docker ps -q -f "name=simulator-api-container" | xargs docker logs -f
+```
+
+Test the api server with curl or postman/httpie
+
+```shell
+curl localhost:80
+```
