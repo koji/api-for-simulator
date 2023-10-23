@@ -25,6 +25,8 @@ def read_protocols():
 def get_file_names():
     folder_path = 'storage'
     if not os.path.exists(folder_path):
+        # Create the storage folder
+        os.makedirs(folder_path)
         return []
 
     file_names = []
