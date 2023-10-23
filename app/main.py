@@ -7,6 +7,7 @@ import subprocess
 
 app = FastAPI()
 
+
 @app.get("/")
 async def root():
     return {"message": "this is a test api server"}
@@ -15,16 +16,22 @@ async def root():
 @app.get("/protocols")
 def read_protocols():
     protocols = get_file_names()
+    if len(protocols) == 0:
+        return "no stored protocol"
     sorted_protocols = sorted(protocols)
     return {"protocols": sorted_protocols}
 
 
 def get_file_names():
     folder_path = 'storage'
+    if not os.path.exists(folder_path):
+        return []
+
     file_names = []
     for root, dirs, files in os.walk(folder_path):
         for file in files:
             file_names.append(file)
+
     return file_names
 
 
@@ -57,10 +64,12 @@ def upload_protocol(protocol: Protocol):
     else:
         return {"error_message": "something wrong while saving a protocol"}
 
+
 def call_opentrons_simulate(protocol_path: str):
     command = f"opentrons_simulate {protocol_path}"
 
-    result = subprocess.run(command, shell=True, capture_output=True, text=True)
+    result = subprocess.run(command, shell=True,
+                            capture_output=True, text=True)
 
     if result.returncode == 0:
         # print("Command executed successfully! Output:")
@@ -69,7 +78,7 @@ def call_opentrons_simulate(protocol_path: str):
     else:
         print("Command failed. Error message:")
         # print(result.stderr)
-        return  {"status": "error", "error_message": result.stderr}
+        return {"status": "error", "error_message": result.stderr}
 
 
 def save_text_as_file(text, file_path):
