@@ -37,12 +37,12 @@ def get_file_names():
     return file_names
 
 
-@app.get("/protocols/{protocol_id}")
-def read_protocol(protocol_id: int, q: str = None):
-    # ToDo search folder and display a protocol file if there is a target protocol
-    if q:
-        return {"protocol_id": protocol_id, "q": q}
-    return {"protocol_id": protocol_id}
+# @app.get("/protocols/{protocol_id}")
+# def read_protocol(protocol_id: int, q: str = None):
+#     # ToDo search folder and display a protocol file if there is a target protocol
+#     if q:
+#         return {"protocol_id": protocol_id, "q": q}
+#     return {"protocol_id": protocol_id}
 
 
 class Protocol(BaseModel):
