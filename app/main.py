@@ -61,9 +61,9 @@ def upload_protocol(protocol: Protocol):
         response = call_opentrons_simulate(file_path)
         print('response', response)
         if response["status"] == "success":
-            return {"protocol_name": protocol.name, "status": "success", "run_log": response['run_log']}
+            return {"protocol_name": protocol.name, "status": response["status"], "run_log": response['run_log']}
         else:
-            return {"error_message": response['error_message']}
+            return {"protocol_name": protocol.name, "status": "error","error_message": response['error_message']}
     else:
         return {"error_message": "something wrong while saving a protocol"}
 
